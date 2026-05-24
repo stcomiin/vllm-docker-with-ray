@@ -1,0 +1,6 @@
+ARG SGLANG_VERSION=v0.5.11-cu129
+FROM lmsysorg/sglang:${SGLANG_VERSION}
+
+# Pin Ray tightly. Ray ↔ torch.distributed version drift is a known pain.
+ARG RAY_VERSION=2.55.1
+RUN pip install --no-cache-dir "ray[default]==${RAY_VERSION}"
